@@ -24,17 +24,49 @@ app.use(passport_1.default.session());
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.json({ limit: '10mb' })); // Increased limit to handle large article content
 const allowedOrigins = process.env.NODE_ENV === 'production'
-    ? ['https://siyar-front.vercel.app', 'http://localhost:5173', 'https://www.siyarinstitute.org', 'https://siyarinstitute.org']
-    : ['http://localhost:5173', 'http://localhost:5174', 'https://www.siyarinstitute.org', 'https://siyarinstitute.org'];
+    ? [
+        'https://siyar-front.vercel.app',
+        'https://siyar-test-frontend.vercel.app',
+        'https://siyar-frontend.vercel.app',
+        'http://localhost:5173'
+    ]
+    : [
+        'http://localhost:5173',
+        'http://localhost:5174',
+        'https://siyar-test-frontend.vercel.app',
+        'https://siyar-frontend.vercel.app'
+    ];
 const corsOptions = {
-    origin: allowedOrigins,
-    credentials: true
+    origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin)
+            return callback(null, true);
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        else {
+            console.log('CORS blocked origin:', origin);
+            return callback(new Error('Not allowed by CORS'), false);
+        }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+    optionsSuccessStatus: 200
 };
 app.use((0, cors_1.default)(corsOptions));
 app.use("/api/v1", routes_1.router);
 app.get("/", (req, res) => {
     res.status(200).json({
-        message: "tour management server is running"
+        message: "siyar backend server is running"
+    });
+});
+// CORS test endpoint
+app.get("/api/v1/cors-test", (req, res) => {
+    res.status(200).json({
+        message: "CORS is working properly",
+        origin: req.headers.origin,
+        timestamp: new Date().toISOString()
     });
 });
 app.use(globalErrorHandler_1.globalErrorHandler);

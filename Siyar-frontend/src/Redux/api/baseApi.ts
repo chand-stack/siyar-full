@@ -4,7 +4,7 @@ import type { RootState } from "../store"
 export const baseApi = createApi({
     reducerPath:"baseApi",
     baseQuery: fetchBaseQuery({
-        baseUrl:"https://siyar-test-backend.vercel.app/api/v1",
+        baseUrl: import.meta.env.VITE_API_BASE_URL || "https://siyar-test-backend.vercel.app/api/v1",
         credentials: 'include', // Include cookies for authentication
         prepareHeaders: (headers, { getState }) => {
             try {

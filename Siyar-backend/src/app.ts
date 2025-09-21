@@ -24,12 +24,35 @@ app.use(cookieParser())
 app.use(express.json({ limit: '10mb' })); // Increased limit to handle large article content
 
 const allowedOrigins = process.env.NODE_ENV === 'production' 
-? ['https://siyar-front.vercel.app', 'http://localhost:5173','https://siyar-test-frontend.vercel.app']
-: ['http://localhost:5173', 'http://localhost:5174','https://siyar-test-frontend.vercel.app'];
+? [
+    'https://siyar-front.vercel.app', 
+    'https://siyar-test-frontend.vercel.app',
+    'https://siyar-frontend.vercel.app',
+    'http://localhost:5173'
+  ]
+: [
+    'http://localhost:5173', 
+    'http://localhost:5174',
+    'https://siyar-test-frontend.vercel.app',
+    'https://siyar-frontend.vercel.app'
+  ];
 
 const corsOptions:cors.CorsOptions = {
-    origin: allowedOrigins,
-    credentials: true
+    origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        } else {
+            console.log('CORS blocked origin:', origin);
+            return callback(new Error('Not allowed by CORS'), false);
+        }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+    optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
@@ -39,6 +62,15 @@ app.use("/api/v1",router)
 app.get("/",(req:Request,res:Response)=>{
     res.status(200).json({
         message: "siyar backend server is running"
+    })
+})
+
+// CORS test endpoint
+app.get("/api/v1/cors-test",(req:Request,res:Response)=>{
+    res.status(200).json({
+        message: "CORS is working properly",
+        origin: req.headers.origin,
+        timestamp: new Date().toISOString()
     })
 })
 
