@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SeriesRoutes = void 0;
+const express_1 = require("express");
+const series_controller_1 = require("./series.controller");
+exports.SeriesRoutes = (0, express_1.Router)();
+exports.SeriesRoutes.post("/", series_controller_1.SeriesController.create);
+exports.SeriesRoutes.get("/", series_controller_1.SeriesController.list);
+exports.SeriesRoutes.patch("/:id", series_controller_1.SeriesController.update);
+exports.SeriesRoutes.delete("/:id", series_controller_1.SeriesController.remove);

@@ -1,0 +1,27 @@
+{
+    "title": "Sample Image Uploads",
+    "description": "Example data for image upload module",
+    "sampleImages": [
+      {
+        "originalName": "hero-image.jpg",
+        "fileName": "hero-image.jpg",
+        "fileUrl": "https://res.cloudinary.com/example/image/upload/v1234567890/uploads/hero-image.jpg",
+        "cloudinaryId": "uploads/hero-image",
+        "fileSize": 2048576,
+        "mimeType": "image/jpeg",
+        "uploadedBy": "admin",
+        "isActive": true
+      },
+      {
+        "originalName": "logo.png",
+        "fileName": "logo.png",
+        "fileUrl": "https://res.cloudinary.com/example/image/upload/v1234567890/uploads/logo.png",
+        "cloudinaryId": "uploads/logo",
+        "fileSize": 512000,
+        "mimeType": "image/png",
+        "uploadedBy": "admin",
+        "isActive": true
+      }
+    ]
+  }
+  

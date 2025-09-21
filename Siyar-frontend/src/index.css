@@ -1,0 +1,344 @@
+@import "tailwindcss";
+@plugin "daisyui"{
+    themes: light --default;
+  }
+
+  /* FontAwesome (OTF) */
+@font-face {
+  font-family: 'FontAwesome6Brands';
+  src: url('./assets/Fonts/FontAwesome6Brands-Regular-400.otf') format('opentype');
+}
+
+/* Roboto Condensed Bold */
+@font-face {
+  font-family: 'RobotoCondensedBold';
+  src: url('./assets/Fonts/RobotoCondensed-Bold.ttf') format('truetype');
+}
+
+/* Roboto Condensed Italic */
+@font-face {
+  font-family: 'RobotoCondensedItalic';
+  src: url('./assets/Fonts/RobotoCondensed-Italic.ttf') format('truetype');
+}
+
+/* Roboto Condensed Regular */
+@font-face {
+  font-family: 'RobotoCondensedRegular';
+  src: url('./assets/Fonts/RobotoCondensed-Regular.ttf') format('truetype');
+}
+
+/* Arabic font */
+@font-face {
+  font-family: 'Cairo-Black';
+  src: url('./assets/Fonts/Cairo-Black.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cairo-Bold';
+  src: url('./assets/Fonts/Cairo-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cairo-ExtraBold';
+  src: url('./assets/Fonts/Cairo-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cairo-ExtraLight';
+  src: url('./assets/Fonts/Cairo-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cairo-Light';
+  src: url('./assets/Fonts/Cairo-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cairo-Medium';
+  src: url('./assets/Fonts/Cairo-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cairo-Regular';
+  src: url('./assets/Fonts/Cairo-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cairo-SemiBold';
+  src: url('./assets/Fonts/Cairo-SemiBold.ttf') format('truetype');
+}
+
+
+
+/* Utility Classes */
+.font-fontawesome {
+  font-family: 'FontAwesome6Brands', sans-serif;
+}
+
+.font-roboto-bold {
+  font-family: 'RobotoCondensedBold', sans-serif;
+}
+
+.font-roboto-italic {
+  font-family: 'RobotoCondensedItalic', sans-serif;
+}
+
+.font-roboto-regular {
+  font-family: 'RobotoCondensedRegular', sans-serif;
+}
+
+
+/* Arabic font */
+
+.Cairo-Black {
+  font-family: 'Cairo-Black', sans-serif;
+}
+.Cairo-Bold {
+  font-family: 'Cairo-Bold', sans-serif;
+}
+.Cairo-ExtraBold {
+  font-family: 'Cairo-ExtraBold', sans-serif;
+}
+.Cairo-ExtraLight {
+  font-family: 'Cairo-ExtraLight', sans-serif;
+}
+.Cairo-Light {
+  font-family: 'Cairo-Light', sans-serif;
+}
+.Cairo-Medium {
+  font-family: 'Cairo-Medium', sans-serif;
+}
+.Cairo-Regular {
+  font-family: 'Cairo-Regular', sans-serif;
+}
+.Cairo-SemiBold {
+  font-family: 'Cairo-SemiBold', sans-serif;
+}
+
+/* Language-based font utility classes */
+.font-cairo {
+  font-family: 'Cairo-Regular', sans-serif;
+}
+
+.font-roboto {
+  font-family: 'RobotoCondensedRegular', sans-serif;
+}
+
+/* Language-specific typography improvements */
+.font-cairo h1, .font-cairo h2, .font-cairo h3, .font-cairo h4, .font-cairo h5, .font-cairo h6 {
+  font-family: 'Cairo-Bold', sans-serif;
+}
+
+.font-roboto h1, .font-roboto h2, .font-roboto h3, .font-roboto h4, .font-roboto h5, .font-roboto h6 {
+  font-family: 'RobotoCondensedBold', sans-serif;
+}
+
+/* Specific font classes for article content */
+.Cairo-Regular, .Cairo-Regular * {
+  font-family: 'Cairo-Regular', Arial, sans-serif !important;
+}
+
+.font-roboto-regular, .font-roboto-regular * {
+  font-family: 'RobotoCondensedRegular', Arial, sans-serif !important;
+}
+
+/* JoditEditor specific font inheritance */
+.jodit-wysiwyg * {
+  font-family: inherit !important;
+}
+
+/* RTL support for Arabic */
+[dir="rtl"] .font-cairo {
+  text-align: right;
+}
+
+[dir="rtl"] .font-cairo .prose {
+  text-align: right;
+}
+
+/* Article Content Responsive Styling */
+.article-content {
+  /* Base styles */
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.article-content * {
+  max-width: 100% !important;
+  box-sizing: border-box;
+  font-family: inherit !important; /* Ensure all content inherits the parent font */
+}
+
+/* Images */
+.article-content img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  display: block;
+}
+
+/* Videos and iframes */
+.article-content video,
+.article-content iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16/9;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  display: block;
+}
+
+/* Tables */
+.article-content table {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto;
+  display: block;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.article-content table th,
+.article-content table td {
+  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
+  word-wrap: break-word;
+  min-width: 100px;
+}
+
+/* Code blocks */
+.article-content pre {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto;
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.article-content code {
+  background-color: #f3f4f6;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  word-wrap: break-word;
+}
+
+/* Typography */
+.article-content h1 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+}
+
+.article-content h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.article-content ul,
+.article-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.article-content li {
+  margin-bottom: 0.25rem;
+}
+
+.article-content blockquote {
+  border-left: 4px solid #2563eb;
+  padding-left: 1rem;
+  font-style: italic;
+  color: #374151;
+  margin: 1rem 0;
+}
+
+.article-content a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.article-content a:hover {
+  color: #1d4ed8;
+}
+
+/* Responsive breakpoints */
+@media (min-width: 768px) {
+  .article-content h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  .article-content h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .article-content h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .article-content h1 {
+    font-size: 3rem;
+    line-height: 1;
+  }
+  
+  .article-content h2 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  .article-content h3 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+/* SnapWidget Instagram Feed Custom Styling */
+.snapwidget-widget {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Ensure the overlay is properly positioned and clickable */
+.snapwidget-widget + div {
+  pointer-events: auto !important;
+}
+
+/* Responsive container adjustments */
+@media (max-width: 768px) {
+  .snapwidget-widget {
+    /* Maintain aspect ratio on mobile */
+    min-height: 250px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .snapwidget-widget {
+    /* Smaller minimum height for very small screens */
+    min-height: 200px !important;
+  }
+}
