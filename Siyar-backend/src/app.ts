@@ -24,8 +24,8 @@ app.use(cookieParser())
 app.use(express.json({ limit: '10mb' })); // Increased limit to handle large article content
 
 const allowedOrigins = process.env.NODE_ENV === 'production' 
-? ['https://siyar-front.vercel.app', 'http://localhost:5173','https://www.siyarinstitute.org', 'https://siyarinstitute.org']
-: ['http://localhost:5173', 'http://localhost:5174','https://www.siyarinstitute.org', 'https://siyarinstitute.org'];
+? ['https://siyar-front.vercel.app', 'http://localhost:5173','https://siyar-test-frontend.vercel.app']
+: ['http://localhost:5173', 'http://localhost:5174','https://siyar-test-frontend.vercel.app'];
 
 const corsOptions:cors.CorsOptions = {
     origin: allowedOrigins,
@@ -38,7 +38,7 @@ app.use("/api/v1",router)
 
 app.get("/",(req:Request,res:Response)=>{
     res.status(200).json({
-        message: "tour management server is running"
+        message: "siyar backend server is running"
     })
 })
 
